@@ -1,0 +1,454 @@
+{
+  "verified_at": "2026-10-09T13:16:58+00:00",
+  "as_of": "2026-10-09",
+  "tool": "TinyFish free search/fetch_content",
+  "paid_automation_used": false,
+  "summary": {
+    "records": 54,
+    "open": 30,
+    "closed": 20,
+    "direct_apply_urls_verified": 0
+  },
+  "method": "Preserved original official page extractions; whole-body selector recovers original source tables excluded by default readability. Future deadlines only treated open where an original supplier invitation or active status exists.",
+  "records": [
+    {
+      "id": "ksau_hs-260939001214",
+      "source_url": "https://ksau-hs.edu.sa/Arabic/UniversityBiddings/Pages/default.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "260939001214",
+      "deadline": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "ksau_hs-260939003511",
+      "source_url": "https://ksau-hs.edu.sa/Arabic/UniversityBiddings/Pages/default.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "260939003511",
+      "deadline": "2026-10-12",
+      "status": "open"
+    },
+    {
+      "id": "ksau_hs-260839002599",
+      "source_url": "https://ksau-hs.edu.sa/Arabic/UniversityBiddings/Pages/default.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "260839002599",
+      "deadline": "2026-10-15",
+      "status": "open"
+    },
+    {
+      "id": "ksau_hs-260839005642",
+      "source_url": "https://ksau-hs.edu.sa/Arabic/UniversityBiddings/Pages/default.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "260839005642",
+      "deadline": "2026-09-16",
+      "status": "closed"
+    },
+    {
+      "id": "ksau_hs-260739009811",
+      "source_url": "https://ksau-hs.edu.sa/Arabic/UniversityBiddings/Pages/default.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "260739009811",
+      "deadline": "2026-09-09",
+      "status": "closed"
+    },
+    {
+      "id": "etimad-260439014610",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=LHJVMKZD1IltsGleZgp23A%3D%3D",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260439014610",
+      "deadline": "2026-06-03",
+      "status": "awarded"
+    },
+    {
+      "id": "etimad-260739008340",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=TqPctRus8*@@**oKVazZo8WgtQ==",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260739008340",
+      "deadline": "2026-08-08",
+      "status": "closed"
+    },
+    {
+      "id": "etimad-260639008732",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=qQv1whkHD*@@**nHrC2tF5wAeg==",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260639008732",
+      "deadline": "2026-08-24",
+      "status": "closed"
+    },
+    {
+      "id": "etimad-251139015260",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=yvRQBmfGDb0IhCx156ZvpA==",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "251139015260",
+      "deadline": "2026-01-18",
+      "status": "closed"
+    },
+    {
+      "id": "etimad-260539001329",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=vHlNrCbAUBl9RS*@@**fFGIzWg==",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260539001329",
+      "deadline": "2026-08-06",
+      "status": "awarded"
+    },
+    {
+      "id": "etimad-260739006173",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=8kIMLtep*@@**Vdggbc4aDrFvA==",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260739006173",
+      "deadline": "2026-08-09",
+      "status": "closed"
+    },
+    {
+      "id": "etimad-260639004282",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=FxUmLRJ3hOSjpPWziX4nnw%3D%3D",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260639004282",
+      "deadline": "2026-07-30",
+      "status": "awarded"
+    },
+    {
+      "id": "etimad-260339008226",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=%20YRCenX6uLcvy%20DuSik1Fg==",
+      "snapshot": "research/tenders/raw/etimadDetails.json",
+      "reference": "260339008226",
+      "deadline": "2026-04-12",
+      "status": "awarded"
+    },
+    {
+      "id": "etimad-260939008063",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=njJ1OT6igDcAnC%20UDPnQ4w%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260939008063",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260939008206",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=gvDMuxghlxYRkSqTQIdT1w%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260939008206",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260939008064",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=iKQYCdqB4f6FoSXI0vmazA%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260939008064",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839010244",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=KKRudVZyy5jf8jOoi4E70Q%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260839010244",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-261039001205",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=BS*%40%40**4EgFmFC%20qKYBpmpvh7w%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "261039001205",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-261039001872",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=cqBfdFsvdMiJYQ1c%20sLEZQ%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "261039001872",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-261039000405",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=v4tkrS*%40%40**VIrWF7i1oYhsMaQ%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "261039000405",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839006939",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=PkTdjr0rqI07CPJTppDeZw%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260839006939",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839005532",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=1Utxx3y3UEmjgZ6BwpUs4Q%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260839005532",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839003108",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=fSrtSfUu*%40%40**J1jGIK*%40%40**HuA*%40%40**dw%3D%3D",
+      "snapshot": "research/tenders/raw/current0.json",
+      "reference": "260839003108",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260939003337",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=37gMjz56mjfgl9iZyO86Cg%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260939003337",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839006963",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=nhM37nSHZonenx0rYnt4EQ%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260839006963",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839005415",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=7DEG8enHHBFA4jP%20BciCrA%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260839005415",
+      "deadline": "2026-10-12",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839009088",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=xNFbq9tkbQkueAm5zwkGLA%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260839009088",
+      "deadline": "2026-10-12",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839005417",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=gYZJ6CHzldLh2tX7cAdGrQ%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260839005417",
+      "deadline": "2026-10-12",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839005418",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=h6JnX64ncMIv0a1QC6HuWQ%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260839005418",
+      "deadline": "2026-10-13",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260639003607",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=U0xDTYdHRlfPHnt4%20QCkFg%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260639003607",
+      "deadline": "2026-10-15",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839010446",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=B03W812xr7z0RsZEz28Q5A%3D%3D",
+      "snapshot": "research/tenders/raw/facilityOfficials.json",
+      "reference": "260839010446",
+      "deadline": "2026-10-15",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260939008348",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=Gj2Wg4iktxsmkimPf2wEbw%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260939008348",
+      "deadline": "2026-10-11",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260939006587",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=iEXMqg6Qf2RK*%40%40**CjMXAcILQ%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260939006587",
+      "deadline": "2026-10-13",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260739010789",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=guadgmOGOuRxtOHfKAxn9Q%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260739010789",
+      "deadline": "2026-10-14",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260739010792",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=vJ4z288H5S5Br3VOwXtEdA%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260739010792",
+      "deadline": "2026-10-14",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260839008320",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=cLK4l%20buoDeUdVo9%202GwpQ%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260839008320",
+      "deadline": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260639005582",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=zOs23AK4T9rqVZUmnjHvqg%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260639005582",
+      "deadline": "2026-10-27",
+      "status": "open"
+    },
+    {
+      "id": "etimad-261039002632",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=j2e9U14k4FH7IX7cJ2*%40%40**WkQ%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "261039002632",
+      "deadline": "2026-11-08",
+      "status": "open"
+    },
+    {
+      "id": "etimad-260439014797",
+      "source_url": "https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=ZA5Xa9wyDS7XRlL52XRFLg%3D%3D",
+      "snapshot": "research/tenders/raw/hospitalityOfficials.json",
+      "reference": "260439014797",
+      "deadline": "2026-12-05",
+      "status": "open"
+    },
+    {
+      "id": "geosa-48-414-1",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "48/414/1",
+      "deadline": "2026-07-25",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-412-17",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/412/17",
+      "deadline": "2026-04-05",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-409-14",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/409/14",
+      "deadline": "2025-12-07",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-406-11",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/406/11",
+      "deadline": "2025-11-23",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-403-8",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/403/8",
+      "deadline": "2025-09-27",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-397-2",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/397/2",
+      "deadline": "2025-08-12",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-398-3",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/398/3",
+      "deadline": "2025-08-09",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-241039021914",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "241039021914",
+      "deadline": "2024-11-16",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-241039017961",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "241039017961",
+      "deadline": "2024-11-12",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-241039017854",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "241039017854",
+      "deadline": "2024-11-12",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-396-1",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/396/1",
+      "deadline": "2025-07-31",
+      "status": "closed"
+    },
+    {
+      "id": "geosa-47-401-6",
+      "source_url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "snapshot": "research/tenders/raw/bodyRecords.json",
+      "reference": "47/401/6",
+      "deadline": "2025-08-28",
+      "status": "closed"
+    },
+    {
+      "id": "taqeem-PRCOMP20260800034",
+      "source_url": "https://taqeem.gov.sa/tenders/mshrw-tshgyl-wsyn-mbn-lhyy-ls-wdy-llmqymyn-166",
+      "snapshot": "research/tenders/raw/next0.json",
+      "reference": "PRCOMP20260800034",
+      "deadline": "2026-10-27",
+      "status": "open"
+    },
+    {
+      "id": "dasc-21-2026",
+      "source_url": "https://www.dasc.gov.sa/news/41",
+      "snapshot": "research/tenders/raw/searchMore3.json",
+      "reference": "21/2026",
+      "deadline": "2026-06-21",
+      "status": "closed"
+    },
+    {
+      "id": "dasc-20-2026",
+      "source_url": "https://www.dasc.gov.sa/news/43",
+      "snapshot": "research/tenders/raw/searchMore3.json",
+      "reference": "20/2026",
+      "deadline": "2026-06-18",
+      "status": "closed"
+    }
+  ],
+  "limitations": [
+    "All apply_url values are null because no verified specific portal submission action exists. Official submission email instructions are displayed as instructions, not portal Apply buttons.",
+    "No cloud paid model or paid extraction used.",
+    "The initial automatic server-side network access was denied; browser-assisted extraction proves source connection during this session only. Scheduled production refresh requires separately tested runtime networking.",
+    "GEOSA source inconsistent HVAC title and office-furniture purpose are preserved with a data note.",
+    "A KSAU-HS page footer contains old generic last-modified metadata; actual tender rows supply independently labeled 2026 closing dates."
+  ]
+}

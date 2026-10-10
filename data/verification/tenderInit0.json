@@ -1,0 +1,12 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"results\": [],\n  \"errors\": [\n    {\n      \"url\": \"https://tender.etimad.sa/Tender/AllTenders\",\n      \"error\": \"invalid_url\"\n    },\n    {\n      \"url\": \"https://portal.etimad.sa/en-us/services/Index/44\",\n      \"error\": \"page_not_found\",\n      \"status\": 404\n    },\n    {\n      \"url\": \"https://www.rcjy.gov.sa/tenders\",\n      \"error\": \"proxy_error\"\n    },\n    {\n      \"url\": \"https://ncp.gov.sa/en/Tender/Pages/default.aspx\",\n      \"error\": \"proxy_error\"\n    }\n  ]\n}"
+      }
+    ],
+    "isError": false
+  }
+}

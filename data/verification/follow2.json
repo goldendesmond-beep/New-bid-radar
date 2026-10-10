@@ -1,0 +1,12 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"site:tenders.etimad.sa/Tender/DetailsForVisitor \\\"2610\\\"\",\n  \"results\": [\n    {\n      \"position\": 1,\n      \"site_name\": \"tenders.etimad.sa\",\n      \"snippet\": \"اسم المنافسة. T.NM( 2610 ) OIL LUBRICANT WITH DISPENSER NOZZLE FOR SYNTHES DRILLS POWER TOOLS ; رقم المنافسة. 2610 ; الرقم المرجعي. 250439016887 ; الغرض من ...\",\n      \"title\": \"تفاصيل المنافسة - المنافسات\",\n      \"url\": \"https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=N2aSyfWithJxZSxR4AheuA==\"\n    },\n    {\n      \"position\": 2,\n      \"site_name\": \"tenders.etimad.sa\",\n      \"snippet\": \"... قطنية للاسنان مقاس 4. رقم المنافسة. 2610/8/2021. الرقم المرجعي. 211039440548. الغرض من المنافسة. توريد مستلزمات طبية ========== ...عرض المزيد... توريد مستلزمات ...\",\n      \"title\": \"تفاصيل المنافسة - منصة اعتماد\",\n      \"url\": \"https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=Bc1DIXmT%20*@@**hUdMGzPp*@@**IZQ==\"\n    },\n    {\n      \"position\": 3,\n      \"site_name\": \"tenders.etimad.sa\",\n      \"snippet\": \"اسم المنافسة. توريد المحروقات لمركبات الشؤون الصحية بمنطقة عسير الخارجة عن الاتفاقية الاطارية ; رقم المنافسة. 1447/2610 ; الرقم المرجعي. 250839006295 ; الغرض من ...\",\n      \"title\": \"تفاصيل المنافسة\",\n      \"url\": \"https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=Bxuh9v4FNAcn4enjoHJEjQ==\"\n    },\n    {\n      \"position\": 4,\n      \"site_name\": \"tenders.etimad.sa\",\n      \"snippet\": \"اسم المنافسة. تصنيع اطقم جلد مع طباعة هوية جامعة الدفاع الوطني ودوسيات لطاولة الاجتماعات ; رقم المنافسة. 2610 ; الرقم المرجعي. 240839004916 ; الغرض من المنافسة.\",\n      \"title\": \"تفاصيل المنافسة - المنافسات\",\n      \"url\": \"https://tenders.etimad.sa/Tender/DetailsForVisitor?STenderId=2HhoMiFe8J5Lnat83QgcRA%3D%3D\"\n    }\n  ],\n  \"total_results\": 4,\n  \"page\": 0\n}"
+      }
+    ],
+    "isError": false
+  }
+}

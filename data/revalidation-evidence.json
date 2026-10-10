@@ -1,0 +1,436 @@
+{
+  "verified_from_saved_original_HTML": 51,
+  "active_verified": 30,
+  "missing_parser_support": [
+    {
+      "id": "geosa-47-401-6",
+      "source_id": "geosa",
+      "reference": "47/401/6",
+      "status": "closed"
+    },
+    {
+      "id": "dasc-21-2026",
+      "source_id": "dasc",
+      "reference": "21/2026",
+      "status": "closed"
+    },
+    {
+      "id": "dasc-20-2026",
+      "source_id": "dasc",
+      "reference": "20/2026",
+      "status": "closed"
+    }
+  ],
+  "deadline_mismatches": [],
+  "checks": [
+    {
+      "id": "ksau_hs-260939001214",
+      "reference": "260939001214",
+      "deadline": "2026-10-18",
+      "status": "open",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية"
+    },
+    {
+      "id": "ksau_hs-260939003511",
+      "reference": "260939003511",
+      "deadline": "2026-10-12",
+      "status": "open",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية"
+    },
+    {
+      "id": "ksau_hs-260839002599",
+      "reference": "260839002599",
+      "deadline": "2026-10-15",
+      "status": "open",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية"
+    },
+    {
+      "id": "ksau_hs-260839005642",
+      "reference": "260839005642",
+      "deadline": "2026-09-16",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية"
+    },
+    {
+      "id": "ksau_hs-260739009811",
+      "reference": "260739009811",
+      "deadline": "2026-09-09",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية"
+    },
+    {
+      "id": "etimad-260439014610",
+      "reference": "260439014610",
+      "deadline": "2026-06-03",
+      "status": "awarded",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "الديوان العام لرئاسة أمن الدولة"
+    },
+    {
+      "id": "etimad-260739008340",
+      "reference": "260739008340",
+      "deadline": "2026-08-08",
+      "status": "closed",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "أمانة منطقة الرياض"
+    },
+    {
+      "id": "etimad-260639008732",
+      "reference": "260639008732",
+      "deadline": "2026-08-24",
+      "status": "closed",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "الدفاع المدني"
+    },
+    {
+      "id": "etimad-251139015260",
+      "reference": "251139015260",
+      "deadline": "2026-01-18",
+      "status": "closed",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "صندوق البنية التحتية الوطني"
+    },
+    {
+      "id": "etimad-260539001329",
+      "reference": "260539001329",
+      "deadline": "2026-08-06",
+      "status": "awarded",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "جامعة الملك خالد"
+    },
+    {
+      "id": "etimad-260739006173",
+      "reference": "260739006173",
+      "deadline": "2026-08-09",
+      "status": "closed",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "وزارة السياحة"
+    },
+    {
+      "id": "etimad-260639004282",
+      "reference": "260639004282",
+      "deadline": "2026-07-30",
+      "status": "awarded",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "بنك التنمية الاجتماعية"
+    },
+    {
+      "id": "etimad-260339008226",
+      "reference": "260339008226",
+      "deadline": "2026-04-12",
+      "status": "awarded",
+      "snapshot": "etimadDetails.json",
+      "organization_parsed": "وكالة الحرس الوطني القطاع الغربي"
+    },
+    {
+      "id": "etimad-260939008063",
+      "reference": "260939008063",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "المباحث العامة"
+    },
+    {
+      "id": "etimad-260939008206",
+      "reference": "260939008206",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "المباحث العامة"
+    },
+    {
+      "id": "etimad-260939008064",
+      "reference": "260939008064",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "المباحث العامة"
+    },
+    {
+      "id": "etimad-260839010244",
+      "reference": "260839010244",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "قوات الأمن الخاصة"
+    },
+    {
+      "id": "etimad-261039001205",
+      "reference": "261039001205",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "إدارة مكافحة المخدرات بمنطقة تبوك"
+    },
+    {
+      "id": "etimad-261039001872",
+      "reference": "261039001872",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "الأمن العام (الإدارة العامة للمشاريع والصيانة)"
+    },
+    {
+      "id": "etimad-261039000405",
+      "reference": "261039000405",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "جامعة المجمعة"
+    },
+    {
+      "id": "etimad-260839006939",
+      "reference": "260839006939",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "أمانة منطقة الحدود الشمالية"
+    },
+    {
+      "id": "etimad-260839005532",
+      "reference": "260839005532",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "القوات البحرية"
+    },
+    {
+      "id": "etimad-260839003108",
+      "reference": "260839003108",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "current0.json",
+      "organization_parsed": "الهيئة السعودية للمياه"
+    },
+    {
+      "id": "etimad-260939003337",
+      "reference": "260939003337",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "أمانة منطقة الرياض"
+    },
+    {
+      "id": "etimad-260839006963",
+      "reference": "260839006963",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "الهيئة السعودية للمياه"
+    },
+    {
+      "id": "etimad-260839005415",
+      "reference": "260839005415",
+      "deadline": "2026-10-12",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "وزارة الداخلية - الديوان العام"
+    },
+    {
+      "id": "etimad-260839009088",
+      "reference": "260839009088",
+      "deadline": "2026-10-12",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "المديرية العامة للسجون"
+    },
+    {
+      "id": "etimad-260839005417",
+      "reference": "260839005417",
+      "deadline": "2026-10-12",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "وزارة الداخلية - الديوان العام"
+    },
+    {
+      "id": "etimad-260839005418",
+      "reference": "260839005418",
+      "deadline": "2026-10-13",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "وزارة الداخلية - الديوان العام"
+    },
+    {
+      "id": "etimad-260639003607",
+      "reference": "260639003607",
+      "deadline": "2026-10-15",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "تجمع جازان الصحي"
+    },
+    {
+      "id": "etimad-260839010446",
+      "reference": "260839010446",
+      "deadline": "2026-10-15",
+      "status": "open",
+      "snapshot": "facilityOfficials.json",
+      "organization_parsed": "المؤسسة العامة للتدريب التقني والمهني"
+    },
+    {
+      "id": "etimad-260939008348",
+      "reference": "260939008348",
+      "deadline": "2026-10-11",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "إعانة نادي الإبل"
+    },
+    {
+      "id": "etimad-260939006587",
+      "reference": "260939006587",
+      "deadline": "2026-10-13",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "المركز الوطني لتنمية القطاع غير الربحي"
+    },
+    {
+      "id": "etimad-260739010789",
+      "reference": "260739010789",
+      "deadline": "2026-10-14",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "المديرية العامة لمكافحة المخدرات"
+    },
+    {
+      "id": "etimad-260739010792",
+      "reference": "260739010792",
+      "deadline": "2026-10-14",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "المديرية العامة لمكافحة المخدرات"
+    },
+    {
+      "id": "etimad-260839008320",
+      "reference": "260839008320",
+      "deadline": "2026-10-18",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "برنامج رأس الخير"
+    },
+    {
+      "id": "etimad-260639005582",
+      "reference": "260639005582",
+      "deadline": "2026-10-27",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "الأمن العام ( شؤون التدريب)"
+    },
+    {
+      "id": "etimad-261039002632",
+      "reference": "261039002632",
+      "deadline": "2026-11-08",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "الهيئة السعودية للمياه"
+    },
+    {
+      "id": "etimad-260439014797",
+      "reference": "260439014797",
+      "deadline": "2026-12-05",
+      "status": "open",
+      "snapshot": "hospitalityOfficials.json",
+      "organization_parsed": "وزارة الدفاع - الديوان العام"
+    },
+    {
+      "id": "geosa-48-414-1",
+      "reference": "48/414/1",
+      "deadline": "2026-07-25",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-412-17",
+      "reference": "47/412/17",
+      "deadline": "2026-04-05",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-409-14",
+      "reference": "47/409/14",
+      "deadline": "2025-12-07",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-406-11",
+      "reference": "47/406/11",
+      "deadline": "2025-11-23",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-403-8",
+      "reference": "47/403/8",
+      "deadline": "2025-09-27",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-397-2",
+      "reference": "47/397/2",
+      "deadline": "2025-08-12",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-398-3",
+      "reference": "47/398/3",
+      "deadline": "2025-08-09",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-241039021914",
+      "reference": "241039021914",
+      "deadline": "2024-11-16",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-241039017961",
+      "reference": "241039017961",
+      "deadline": "2024-11-12",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-241039017854",
+      "reference": "241039017854",
+      "deadline": "2024-11-12",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "geosa-47-396-1",
+      "reference": "47/396/1",
+      "deadline": "2025-07-31",
+      "status": "closed",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة العامة للمساحة والمعلومات الجيومكانية"
+    },
+    {
+      "id": "taqeem-PRCOMP20260800034",
+      "reference": "PRCOMP20260800034",
+      "deadline": "2026-10-27",
+      "status": "open",
+      "snapshot": "bodyRecords.json",
+      "organization_parsed": "الهيئة السعودية للمقيمين المعتمدين"
+    }
+  ],
+  "scope": "Stored official snapshots; no fresh network request"
+}

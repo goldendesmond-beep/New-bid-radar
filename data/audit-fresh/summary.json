@@ -1,0 +1,30 @@
+{
+  "started_at": "2026-10-09T20:57:22+00:00",
+  "completed_at": "2026-10-09T20:59:33+00:00",
+  "flagged_open_before": 30,
+  "official_unique_urls_attempted": 28,
+  "fresh_verified_records": 29,
+  "fresh_current_open": 29,
+  "fresh_closed": 0,
+  "failed_records": 1,
+  "verified_direct_application_urls": 0,
+  "autonomous_live_sources_proven": 0,
+  "access_scope": "Free connector-assisted fresh import. Does not prove Python collector network access or daily job.",
+  "source_counts": {
+    "etimad": {
+      "attempted": 26,
+      "verified": 26,
+      "current_open": 26
+    },
+    "ksau_hs": {
+      "attempted": 3,
+      "verified": 3,
+      "current_open": 3
+    },
+    "taqeem": {
+      "attempted": 1,
+      "verified": 0,
+      "failure": "bot_blocked"
+    }
+  }
+}

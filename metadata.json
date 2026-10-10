@@ -1,0 +1,7 @@
+{
+  "name": "Saudi BidPilot",
+  "description": "فرص ومناقصات سعودية بمصادر موثقة وتسجيل الموردين ومتابعة التقديم.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

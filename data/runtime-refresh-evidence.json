@@ -1,0 +1,93 @@
+{
+  "status": "degraded",
+  "started_at": "2026-10-09T16:45:24+00:00",
+  "finished_at": "2026-10-09T16:45:31+00:00",
+  "closed": 0,
+  "sources": [
+    {
+      "id": "etimad",
+      "name": "اعتماد",
+      "url": "https://tenders.etimad.sa/Tender/AllTendersForVisitor",
+      "status": "UNAVAILABLE",
+      "last_attempt": "2026-10-09T16:45:26+00:00",
+      "last_success": "2026-10-09T13:21:00+00:00",
+      "records_imported": 34,
+      "notes": "network_or_proxy_failure",
+      "list_status": "DEGRADED",
+      "public_detail_status": "LIVE",
+      "automatic_runtime_verified": false,
+      "public_access": "LIVE",
+      "records_extracted": 0
+    },
+    {
+      "id": "ncp",
+      "name": "المركز الوطني للتخصيص",
+      "url": "https://ncp.gov.sa/en/MediaCenter/News/Pages/default.aspx",
+      "status": "UNAVAILABLE",
+      "last_attempt": "2026-10-09T16:45:27+00:00",
+      "last_success": null,
+      "notes": "network_or_proxy_failure",
+      "public_access": "UNAVAILABLE",
+      "automatic_runtime_verified": false,
+      "records_extracted": 0
+    },
+    {
+      "id": "rcjy",
+      "name": "الهيئة الملكية — جازان",
+      "url": "https://jazanpl.rcjy.gov.sa/Brochures",
+      "status": "UNAVAILABLE",
+      "last_attempt": "2026-10-09T16:45:28+00:00",
+      "last_success": null,
+      "notes": "network_or_proxy_failure",
+      "public_access": "UNAVAILABLE",
+      "automatic_runtime_verified": false,
+      "records_extracted": 0
+    },
+    {
+      "id": "taqeem",
+      "name": "الهيئة السعودية للمقيمين المعتمدين",
+      "url": "https://taqeem.gov.sa/en/tenders?status=current",
+      "status": "UNAVAILABLE",
+      "scope": "Official list and actual tender details",
+      "extraction_method": "Browser-assisted public HTML extraction",
+      "automatic_runtime_verified": false,
+      "last_attempt": "2026-10-09T16:45:29+00:00",
+      "last_success": "2026-10-09T13:16:58+00:00",
+      "records_imported": 1,
+      "notes": "network_or_proxy_failure",
+      "public_access": "LIVE",
+      "records_extracted": 0
+    },
+    {
+      "id": "ksau_hs",
+      "name": "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية",
+      "url": "https://ksau-hs.edu.sa/Arabic/UniversityBiddings/Pages/default.aspx",
+      "status": "UNAVAILABLE",
+      "scope": "Public tender table #tenderTable",
+      "extraction_method": "Public full-body HTML table extraction",
+      "automatic_runtime_verified": false,
+      "last_attempt": "2026-10-09T16:45:30+00:00",
+      "last_success": "2026-10-09T13:16:58+00:00",
+      "records_imported": 5,
+      "notes": "network_or_proxy_failure",
+      "public_access": "LIVE",
+      "records_extracted": 0
+    },
+    {
+      "id": "geosa",
+      "name": "الهيئة العامة للمساحة والمعلومات الجيومكانية",
+      "url": "https://www.geosa.gov.sa/ar/Pages/Tenders.aspx",
+      "status": "UNAVAILABLE",
+      "scope": "Public tender .privacy-table tables",
+      "extraction_method": "Public full-body HTML table extraction",
+      "automatic_runtime_verified": false,
+      "last_attempt": "2026-10-09T16:45:31+00:00",
+      "last_success": "2026-10-09T13:16:58+00:00",
+      "records_imported": 12,
+      "notes": "network_or_proxy_failure",
+      "public_access": "LIVE",
+      "records_extracted": 0
+    }
+  ],
+  "zero_cost_only": true
+}

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx server.ts",
     "build": "tsc --noEmit",
-    "start": "tsx server.ts"
+    "start": "tsx server.ts",
+    "test": "node --import tsx --test tests/*.test.ts"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",

@@ -8,8 +8,8 @@ const text={
  ar:{dashboard:'لوحة التحكم',tenders:'جميع المناقصات',hotels:'الفنادق والضيافة',manpower:'توريد العمالة',housekeeping:'التدبير الفندقي',construction:'المقاولات والإنشاءات',maintenance:'التشغيل والصيانة',services:'الخدمات العامة',subcontracts:'المقاولات من الباطن',suppliers:'تسجيل الموردين',saved:'الفرص المحفوظة',tracking:'متابعة التقديم',sources:'مصادر البيانات',company:'ملف الشركة',discover:'اكتشاف الفرص',workspace:'مساحة العمل',all:'الكل',search:'ابحث باسم المنافسة أو الجهة أو الرقم المرجعي…',sector:'القطاع',city:'المدينة',organization:'الجهة',status:'الحالة',kind:'نوع الفرصة',deadline:'الموعد النهائي',published:'تاريخ النشر',reference:'رقم المنافسة',more:'فلاتر إضافية',reset:'مسح الفلاتر',export:'تصدير',open:'مفتوحة',closed:'مغلقة',unknown:'غير محدد',planned:'مخططة',registration_available:'تسجيل متاح',awarded:'ترسية مؤكدة',tender:'مناقصة',rfq:'طلب عرض سعر',rfp:'طلب مقترحات',qualification:'تأهيل',supplier_registration:'تسجيل مورد',subcontract_potential:'استفسار محتمل',subcontract_announced:'مقاولة باطن معلنة',details:'عرض التفاصيل',source:'المصدر الأصلي',apply:'تقديم على المناقصة',register:'تسجيل كمورد',interest:'إبداء اهتمام كمورد',save:'حفظ الفرصة',unsave:'إلغاء الحفظ',verified:'آخر تحقق',confidence:'موثوقية البيانات',login:'يتطلب حسابًا أو تسجيل دخول',noapply:'لم يُتحقق من رابط تقديم مباشر. راجع تعليمات الجهة في المصدر الأصلي.',unpublished:'غير معلن',empty:'لا توجد فرص تطابق الفلاتر',emptyHelp:'جرّب توسيع البحث أو عرض الأرشيف. لا نضيف سجلات لإكمال العدد.',network:'تعذر تحميل البيانات. تحقق من الاتصال ثم أعد المحاولة.',retry:'إعادة المحاولة',results:'فرصة',sort:'ترتيب النتائج',sortDeadline:'الأقرب موعدًا',sortFit:'حسب الملاءمة',openCount:'مناقصات مفتوحة',allCount:'مناقصات موثقة',registrationCount:'تسجيل الموردين',liveCount:'موصلات آلية متحققة',lastCheck:'آخر تحقق للبيانات',publicVerified:'مصدر رسمي',archive:'يشمل الأرشيف المغلق',manualNotice:'البيانات مستوردة من صفحات رسمية تم التحقق منها. حالة كل موصل وتوفر التحديث الآلي موضّحان في صفحة المصادر.',dashboardDesc:'فرص موثقة، مواعيد واضحة، وخطوة تالية من المصدر.',tendersDesc:'استكشف المنافسات المفتوحة والأرشيف، وراجع المصدر قبل تجهيز العرض.',hotelsDesc:'فرص الضيافة وتسجيل موردي المشاريع الفندقية. التسجيل العام لا يثبت وجود عقد فندقي مطروح.',subDesc:'ترسيات موثقة للاستفسار لدى المقاول الرئيسي. الفرص المحتملة لا تعني وجود طلب تعاقد معلن.',suppliersDesc:'نماذج وبوابات التسجيل الرسمية. التسجيل لا يضمن التأهيل أو دعوة لمنافسة.',savedDesc:'محفوظات مساحة العمل الخاصة بهذا المتصفح.',trackingDesc:'حالات متابعة تسجلها شركتك. حالة «تم التقديم» لا تعني إرسال العرض من هذه المنصة.',sourceDesc:'الاتصال والاستخراج والتحديث الآلي حالات منفصلة؛ لا نعتبر مجرد وجود رابط اتصالًا ناجحًا.',companyDesc:'ملاءمة استرشادية بناءً على أنشطة شركتك. لا تمثل تأكيدًا للأهلية القانونية أو الفنية.',description:'نطاق الأعمال',requirements:'شروط المشاركة',documents:'المستندات',instructions:'تعليمات التقديم',fee:'قيمة الوثائق',contractor:'المقاول الرئيسي',award:'إثبات الترسية',contacts:'التواصل التجاري المنشور',potential:'استفسار تجاري محتمل؛ لا توجد دعوة تعاقد من الباطن متحققة.',fit:'توصية الملاءمة',high:'ملاءمة عالية',medium:'ملاءمة متوسطة',low:'ملاءمة منخفضة',rules:'تطابق القواعد',lexical:'التطابق النصي',close:'إغلاق',saveSuccess:'تم الحفظ',saveError:'تعذر الحفظ. أعد المحاولة.',companyName:'اسم الشركة',companySize:'حجم الشركة',small:'صغيرة',mediumSize:'متوسطة',large:'كبيرة',workers:'عدد العمال المتاحين',companySectors:'أنشطة الشركة',companyServices:'الخدمات والتخصصات والإمكانات',saveCompany:'حفظ ملف الشركة',privacy:'يُحفظ الملف والمتابعة في قاعدة البيانات لمساحة هذا المتصفح، دون حساب عابر للأجهزة. تنتهي الجلسة بعد 90 يومًا.',savedStage:'محفوظة',reviewing:'قيد المراجعة',preparing:'تجهيز العرض',submitted:'تم التقديم',won:'ترسية لصالحنا',lost:'لم يتم الترسية',notes:'ملاحظات الشركة',update:'حفظ الحالة',scheduler:'التحديث اليومي',schedulerActive:'مجدول في عملية الخادم الحالية؛ الاستمرار يعتمد على بقاء الاستضافة قيد التشغيل.',schedulerOff:'الكود المجدول جاهز؛ لم يُتحقق من تشغيل يومي على استضافة منشورة.',lastSuccess:'آخر استخراج ناجح',lastAttempt:'آخر محاولة',auto:'التحديث الآلي',manual:'استيراد متحقق',engine:'محركات التحليل المجانية',engineNote:'محركات قواعد وبحث نصي محلية؛ لم تُشغّل نماذج لغوية أو Embeddings.',footer:'روابط المصدر هي المرجع النهائي. توفر فرصة في المنصة لا يثبت أهلية الشركة.',noPaid:'دون واجهات مدفوعة',brandSub:'ذكاء الفرص السعودية',side:'المعلومة من المصدر.<br>القرار لشركتك.',previewNote:'التقديم يتم لدى الجهة المعلنة. المنصة لا ترسل عروضًا أو طلبات تسجيل.',notSaudi:'بوابة عالمية؛ ليست فرصة سعودية محددة',next:'التالي',previous:'السابق',emailInstruction:'تعليمات التقديم بالبريد',directLinks:'الروابط والإجراءات',verification:'ملاحظات التحقق',noFields:'لم تعلن الصفحة هذه التفاصيل؛ راجع وثائق الجهة.',fitLimits:'حدود التوصية',fitReasons:'أسباب الملاءمة',schedulesUnknown:'لم يثبت اتصال إنتاج دائم',readSource:'راجع تفاصيل المنافسة في المصدر',noSaved:'لم تُحفظ فرص بعد',sourceStates:'LIVE: اتصال واستخراج آلي ناجح. MANUAL_IMPORT: استيراد متحقق. DEGRADED: صفحة لا تعطي بيانات قابلة للاستخراج. AUTH_REQUIRED: يلزم تسجيل دخول. BLOCKED: الوصول مرفوض. UNAVAILABLE: غير متاح.'},
  en:{dashboard:'Dashboard',tenders:'All tenders',hotels:'Hotels & hospitality',manpower:'Manpower supply',housekeeping:'Housekeeping',construction:'Construction',maintenance:'Operation & maintenance',services:'General services',subcontracts:'Subcontract leads',suppliers:'Supplier registration',saved:'Saved opportunities',tracking:'Application tracking',sources:'Data sources',company:'Company profile',discover:'Discover',workspace:'Company workspace',all:'All',search:'Search tender, organization or reference…',sector:'Sector',city:'City',organization:'Organization',status:'Status',kind:'Opportunity type',deadline:'Deadline',published:'Published',reference:'Reference',more:'More filters',reset:'Clear filters',export:'Export',open:'Open',closed:'Closed',unknown:'Unknown',planned:'Planned',registration_available:'Registration available',awarded:'Award confirmed',tender:'Tender',rfq:'RFQ',rfp:'RFP',qualification:'Qualification',supplier_registration:'Supplier registration',subcontract_potential:'Potential inquiry',subcontract_announced:'Advertised subcontract',details:'View details',source:'Original source',apply:'Apply for tender',register:'Register as supplier',interest:'Express supplier interest',save:'Save opportunity',unsave:'Remove saved opportunity',verified:'Last verified',confidence:'Data confidence',login:'Account or sign-in required',noapply:'No direct bid submission URL was verified. Read the issuer’s instructions on the original source.',unpublished:'Not published',empty:'No opportunities match these filters',emptyHelp:'Broaden your search or include the closed archive. Records are never added to fill a target.',network:'Could not load data. Check the connection and retry.',retry:'Retry',results:'opportunities',sort:'Sort results',sortDeadline:'Nearest deadline',sortFit:'Company fit',openCount:'Open tenders',allCount:'Verified tenders',registrationCount:'Supplier registrations',liveCount:'Verified automatic connectors',lastCheck:'Latest data verification',publicVerified:'Official source',archive:'Includes closed archive',manualNotice:'Records were imported from verified official pages. Connector status and automatic refresh availability are shown on the sources page.',dashboardDesc:'Verified opportunities, clear deadlines and a next step from the source.',tendersDesc:'Explore open tenders and the archive. Review the original source before preparing an offer.',hotelsDesc:'Hospitality opportunities and project vendor registration. General registration does not prove a hotel contract is available.',subDesc:'Verified awards for inquiries with main contractors. Potential leads are not advertised subcontract packages.',suppliersDesc:'Official registration forms and portals. Registration does not guarantee qualification or a tender invitation.',savedDesc:'Saved records in this browser’s private workspace.',trackingDesc:'Company-entered tracking stages. “Submitted” does not mean this platform sent a bid.',sourceDesc:'Public access, extraction and automatic refresh are separate checks. A URL alone does not establish a successful connection.',companyDesc:'Advisory matching based on company activities. It does not establish legal or technical eligibility.',description:'Scope of work',requirements:'Participation requirements',documents:'Documents',instructions:'Submission instructions',fee:'Document fee',contractor:'Main contractor',award:'Award evidence',contacts:'Published business contacts',potential:'Potential business inquiry; no advertised subcontract invitation was verified.',fit:'Advisory fit score',high:'High fit',medium:'Medium fit',low:'Low fit',rules:'Rule match',lexical:'Lexical match',close:'Close',saveSuccess:'Saved',saveError:'Could not save. Please retry.',companyName:'Company name',companySize:'Company size',small:'Small',mediumSize:'Medium',large:'Large',workers:'Available workers',companySectors:'Company activities',companyServices:'Services, specialties and capabilities',saveCompany:'Save company profile',privacy:'Profile and tracking are stored in the database for this browser workspace, without a cross-device account. Sessions expire after 90 days.',savedStage:'Saved',reviewing:'Reviewing',preparing:'Preparing offer',submitted:'Submitted',won:'Won',lost:'Not awarded',notes:'Company notes',update:'Save stage',scheduler:'Daily refresh',schedulerActive:'Scheduled in the current server process; continuity requires running hosting.',schedulerOff:'Scheduling code is ready; daily operation on a deployed host has not been verified.',lastSuccess:'Last successful extraction',lastAttempt:'Last attempt',auto:'Automatic refresh',manual:'Verified import',engine:'Free analysis engines',engineNote:'Local rule and lexical engines. No language model or embedding model has been run.',footer:'Original sources are the final authority. An opportunity listing does not establish company eligibility.',noPaid:'No paid APIs',brandSub:'Saudi opportunity intelligence',side:'Source-backed information.<br>Your company’s decision.',previewNote:'Apply through the issuer. This platform does not send bids or registration requests.',notSaudi:'Global portal; not a specific Saudi opportunity',next:'Next',previous:'Previous',emailInstruction:'Email submission instructions',directLinks:'Links and actions',verification:'Verification notes',noFields:'These details were not published on the page. Review the issuer’s documents.',fitLimits:'Recommendation limits',fitReasons:'Match reasons',schedulesUnknown:'No persistent production connection verified',readSource:'Read tender details on the source',noSaved:'No saved opportunities yet',sourceStates:'LIVE: successful automatic connection and extraction. MANUAL_IMPORT: verified import. DEGRADED: page has no extractable records. AUTH_REQUIRED: sign-in required. BLOCKED: access refused. UNAVAILABLE: unavailable.'}
 };
-Object.assign(text.ar,{targetCities:'المدن المستهدفة (مفصولة بفاصلة)',certifications:'الشهادات والتصنيفات المتاحة (مفصولة بفاصلة)',contractMin:'أدنى نطاق عقد مناسب — ريال',contractMax:'أعلى نطاق عقد مناسب — ريال'});
-Object.assign(text.en,{targetCities:'Target cities (comma-separated)',certifications:'Certificates and classifications (comma-separated)',contractMin:'Minimum contract range — SAR',contractMax:'Maximum contract range — SAR'});
+Object.assign(text.ar,{targetCities:'المدن المستهدفة (مفصولة بفاصلة)',certifications:'الشهادات والتصنيفات المتاحة (مفصولة بفاصلة)',contractMin:'أدنى نطاق عقد مناسب — ريال',contractMax:'أعلى نطاق عقد مناسب — ريال',manualRefresh:'تحديث المناقصات (إدارة)',manualOnly:'تحديث يدوي للمشرف فقط — لا توجد مهام cron آلية. يتم التحقق وتحديث حالات الإغلاق في قاعدة بيانات Cloudflare D1.',adminTokenPrompt:'أدخل مفتاح المشرف للمتابعة (لا يقل عن 32 حرفًا):',adminClearToken:'مسح المفتاح المحفوظ',refreshSuccess:'تم تحديث المناقصات بنجاح',refreshError:'فشل التحديث. تأكد من صحة مفتاح المشرف'});
+Object.assign(text.en,{targetCities:'Target cities (comma-separated)',certifications:'Certificates and classifications (comma-separated)',contractMin:'Minimum contract range — SAR',contractMax:'Maximum contract range — SAR',manualRefresh:'Refresh Tenders (Admin)',manualOnly:'Manual admin refresh only — no scheduled daily cron. Verifies and closes expired tenders in Cloudflare D1.',adminTokenPrompt:'Enter admin token to proceed (minimum 32 characters):',adminClearToken:'Clear saved token',refreshSuccess:'Tenders refreshed successfully',refreshError:'Refresh failed. Verify admin token'});
 const t=k=>text[lang][k]||k;
 let sectors={},csrf='',company={},summary={},params={},baseRoute='dashboard',listController=null,loadingId=0;
 const procurement={procurement_only:'true',status:'open'};
@@ -79,7 +79,89 @@ function renderDetail(r){
 }
 async function renderSources(){
  $('#main').innerHTML=head('sources','sourceDesc',false)+`<div class="loading">…</div>`;
- try{const data=await api('/api/sources');$('#main').innerHTML=head('sources','sourceDesc',false)+`<section class="section-card"><h2>${esc(t('scheduler'))}</h2><p class="profile-note">${esc(t(data.scheduler.active?'schedulerActive':'schedulerOff'))}</p><p class="profile-note">${esc(t('sourceStates'))}</p></section><div class="source-grid">${data.items.map(s=>`<article class="source"><div><h2>${esc(s.name)}</h2><p>${esc(s.notes||s.message||s.reason||'')}</p><div class="source-facts"><span>${esc(t('lastAttempt'))}: ${esc(date(s.last_attempt))}</span><span>${esc(t('lastSuccess'))}: ${esc(date(s.last_success))}</span>${s.public_access?`<span>Public access: ${esc(s.public_access)}</span>`:''}</div>${link(s.url,t('source'),'btn text')}</div><div><span class="badge ${esc(s.status)}">${esc(s.status)}</span></div></article>`).join('')}</div>`}catch{$('#main').innerHTML=head('sources','sourceDesc',false)+`<div class="notice error">${esc(t('network'))}<button class="btn secondary" data-retry-page>${esc(t('retry'))}</button></div>`}
+ try{
+  const data=await api('/api/sources');
+  const hasToken=Boolean(sessionStorage.getItem('bidpilot_admin_token'));
+  $('#main').innerHTML=head('sources','sourceDesc',false)+`
+   <section class="section-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+     <div>
+      <h2>${esc(t('scheduler'))}</h2>
+      <p class="profile-note">${esc(t('manualOnly'))}</p>
+      <p class="profile-note">${esc(t('sourceStates'))}</p>
+     </div>
+     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <button class="btn" id="manual-refresh-btn" type="button">${esc(t('manualRefresh'))}</button>
+      <button class="btn secondary small" id="clear-admin-token-btn" type="button" style="display:${hasToken?'inline-block':'none'}">${esc(t('adminClearToken'))}</button>
+     </div>
+    </div>
+   </section>
+   <div class="source-grid">${data.items.map(s=>`<article class="source"><div><h2>${esc(s.name)}</h2><p>${esc(s.notes||s.message||s.reason||'')}</p><div class="source-facts"><span>${esc(t('lastAttempt'))}: ${esc(date(s.last_attempt))}</span><span>${esc(t('lastSuccess'))}: ${esc(date(s.last_success))}</span>${s.public_access?`<span>Public access: ${esc(s.public_access)}</span>`:''}</div>${link(s.url,t('source'),'btn text')}</div><div><span class="badge ${esc(s.status)}">${esc(s.status)}</span></div></article>`).join('')}</div>`;
+
+  async function executeRefresh(token) {
+   const btn = $('#manual-refresh-btn');
+   if (btn) btn.disabled = true;
+   try {
+    const res = await fetch('/api/admin/refresh', {
+     method: 'POST',
+     headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+     }
+    });
+    const result = await res.json();
+    if (!res.ok) {
+     sessionStorage.removeItem('bidpilot_admin_token');
+     toast(result.message || t('refreshError'));
+    } else {
+     sessionStorage.setItem('bidpilot_admin_token', token);
+     toast(result.message || t('refreshSuccess'));
+     await renderSources();
+    }
+   } catch {
+    toast(t('refreshError'));
+   } finally {
+    if (btn) btn.disabled = false;
+   }
+  }
+
+  $('#manual-refresh-btn')?.addEventListener('click', () => {
+   const token = sessionStorage.getItem('bidpilot_admin_token');
+   if (token) {
+    executeRefresh(token);
+   } else {
+    const dialog = $('#admin-dialog');
+    if (dialog) dialog.showModal();
+   }
+  });
+
+  $('#close-admin-dialog')?.addEventListener('click', () => {
+   $('#admin-dialog')?.close();
+  });
+
+  $('#cancel-admin-dialog')?.addEventListener('click', () => {
+   $('#admin-dialog')?.close();
+  });
+
+  $('#admin-dialog-form')?.addEventListener('submit', (e) => {
+   e.preventDefault();
+   const token = $('#admin-dialog-token')?.value?.trim();
+   if (!token || token.length < 32) {
+    toast(lang === 'ar' ? 'يجب أن لا يقل المفتاح عن 32 حرفًا' : 'Token must be at least 32 characters');
+    return;
+   }
+   $('#admin-dialog')?.close();
+   executeRefresh(token);
+  });
+
+  $('#clear-admin-token-btn')?.addEventListener('click', () => {
+   sessionStorage.removeItem('bidpilot_admin_token');
+   toast(lang === 'ar' ? 'تم مسح المفتاح من الجلسة' : 'Admin token cleared');
+   renderSources();
+  });
+ } catch {
+  $('#main').innerHTML=head('sources','sourceDesc',false)+`<div class="notice error">${esc(t('network'))}<button class="btn secondary" data-retry-page>${esc(t('retry'))}</button></div>`;
+ }
 }
 function companyFields(){return field('targetCities',`<input class="input" id="filter-targetCities" name="target_cities" maxlength="2000" value="${esc((company.target_cities||[]).join(', '))}">`)+field('certifications',`<input class="input" id="filter-certifications" name="certifications" maxlength="3000" value="${esc((company.certifications||[]).join(', '))}">`)+field('contractMin',`<input class="input" id="filter-contractMin" name="contract_min" type="number" min="0" max="1000000000000" value="${Number(company.contract_min)||0}">`)+field('contractMax',`<input class="input" id="filter-contractMax" name="contract_max" type="number" min="0" max="1000000000000" value="${Number(company.contract_max)||0}">`)}
 async function renderCompany(){

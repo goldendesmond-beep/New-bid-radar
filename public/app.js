@@ -82,6 +82,7 @@ async function renderSources(){
  try{
   const data=await api('/api/sources');
   const hasToken=Boolean(sessionStorage.getItem('bidpilot_admin_token'));
+   const lastRunHtml=data.last_run?`<div class="notice" style="margin-top:12px;background:#f8fbf9;border-right:4px solid #103e37;padding:12px;border-radius:6px;"><strong>${esc(lang==='ar'?'نتائج آخر تحقق يدوي:':'Latest manual refresh results:')}</strong> <span style="margin:0 8px;font-size:0.9rem;">${esc(date(data.last_run.finished_at||data.last_run.started_at))}</span><div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:0.92rem;"><span>🟢 ${esc(lang==='ar'?'منافسات جديدة:':'New:')} <strong>${data.last_run.summary?.new_tenders??0}</strong></span><span>🟡 ${esc(lang==='ar'?'منافسات محدثة:':'Updated:')} <strong>${data.last_run.summary?.updated_tenders??0}</strong></span><span>⚪ ${esc(lang==='ar'?'منتهية أغلقت:':'Closed:')} <strong>${data.last_run.summary?.closed_expired??0}</strong></span><span>🔵 ${esc(lang==='ar'?'مصادر حية:':'Live sources:')} <strong>${(data.last_run.summary?.verified_sources||[]).length}</strong></span><span>🛡️ ${esc(lang==='ar'?'مصادر محمية/محفوظة:':'Protected/preserved:')} <strong>${data.last_run.summary?.preserved_sources??0}</strong></span></div></div>`:'';
   $('#main').innerHTML=head('sources','sourceDesc',false)+`
    <section class="section-card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
@@ -95,6 +96,7 @@ async function renderSources(){
       <button class="btn secondary small" id="clear-admin-token-btn" type="button" style="display:${hasToken?'inline-block':'none'}">${esc(t('adminClearToken'))}</button>
      </div>
     </div>
+    ${lastRunHtml}
    </section>
    <div class="source-grid">${data.items.map(s=>`<article class="source"><div><h2>${esc(s.name)}</h2><p>${esc(s.notes||s.message||s.reason||'')}</p><div class="source-facts"><span>${esc(t('lastAttempt'))}: ${esc(date(s.last_attempt))}</span><span>${esc(t('lastSuccess'))}: ${esc(date(s.last_success))}</span>${s.public_access?`<span>Public access: ${esc(s.public_access)}</span>`:''}</div>${link(s.url,t('source'),'btn text')}</div><div><span class="badge ${esc(s.status)}">${esc(s.status)}</span></div></article>`).join('')}</div>`;
 

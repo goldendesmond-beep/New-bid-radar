@@ -13,6 +13,7 @@ import {
   getOpportunities,
   getOpportunityById,
   refreshOpportunities,
+  importOpportunities,
   exportCsv,
 } from './repository.js';
 import { SECTORS, engines } from './intelligence.js';
@@ -168,7 +169,11 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
 
     // POST /api/admin/import
     if (path === '/api/admin/import' && method === 'POST') {
-      return jsonResponse({ imported: 0, mode: 'MANUAL_IMPORT' }, 200, responseHeaders);
+      const authHeader = request.headers.get('Authorization') || '';
+      const configuredToken = env.BIDPILOT_ADMIN_TOKEN || '';
+      const body = await request.json().catch(() => ({}));
+      const result = await importOpportunities(env.DB, authHeader, configuredToken, body);
+      return jsonResponse(result, result.status, responseHeaders);
     }
 
     // GET /api/export.csv & GET /api/export.xlsx

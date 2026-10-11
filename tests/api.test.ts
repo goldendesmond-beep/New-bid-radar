@@ -269,4 +269,56 @@ test('API - Admin refresh security enforcement', async () => {
   const goodData = await resGoodAuth.json();
   assert.strictEqual(goodData.ok, true);
   assert.ok(goodData.message);
+  assert.ok(typeof goodData.new_tenders === 'number');
+  assert.ok(typeof goodData.updated_tenders === 'number');
+  assert.ok(typeof goodData.closed_expired === 'number');
+  assert.ok(Array.isArray(goodData.verified_sources));
+  assert.ok(Array.isArray(goodData.failed_sources));
+  assert.ok(Array.isArray(goodData.unreachable_sources));
+  assert.ok(typeof goodData.preserved_sources === 'number');
 });
+
+test('API - POST /api/admin/import verified manual import', async () => {
+  const env = await setupTestEnv();
+
+  const payload = {
+    source_id: 'ksau_hs',
+    opportunities: [
+      {
+        id: 'ksau-api-manual-1',
+        title: 'عقد استشارات هندسية',
+        organization: 'جامعة الملك سعود للعلوم الصحية',
+        kind: 'tender',
+        status: 'open',
+        deadline: '2028-01-01',
+        city: 'الرياض',
+        sectors: ['consulting'],
+        reference: 'KSAU-ENG-101',
+        source_url: 'https://ksau-hs.edu.sa/101',
+      },
+    ],
+  };
+
+  // Unauthorized import
+  const unauthReq = new Request('http://localhost:3000/api/admin/import', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer bad_token', 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const unauthRes = await handleRequest(unauthReq, env);
+  assert.strictEqual(unauthRes.status, 401);
+
+  // Authorized import
+  const authReq = new Request('http://localhost:3000/api/admin/import', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${ADMIN_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const authRes = await handleRequest(authReq, env);
+  assert.strictEqual(authRes.status, 200);
+  const data = await authRes.json();
+  assert.strictEqual(data.ok, true);
+  assert.strictEqual(data.imported, 1);
+  assert.strictEqual(data.new_records, 1);
+});
+

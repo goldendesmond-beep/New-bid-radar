@@ -12,6 +12,7 @@ import {
   getOpportunities,
   getOpportunityById,
   refreshOpportunities,
+  importOpportunities,
   verifyAdminToken,
 } from '../src/repository.js';
 
@@ -205,3 +206,185 @@ test('D1 Database - Manual admin refresh lifecycle', async () => {
   assert.ok(summary.last_run !== null);
   assert.strictEqual(summary.last_run.status, 'completed');
 });
+
+test('D1 Database - Discovery, deduplication, and version tracking during refresh', async () => {
+  const db = await createLocalD1Database(':memory:');
+  const initialOpp = {
+    id: 'etimad-existing-1',
+    source_id: 'etimad',
+    kind: 'tender',
+    status: 'open',
+    title: 'مشروع صيانة شبكات المياه والمضخات',
+    organization: 'وزارة البيئة والمياه والزراعة',
+    source_url: 'https://tenders.etimad.sa/1',
+    deadline: '2027-01-01',
+    requirements: ['شهادة تصنيف'],
+  };
+  await initDatabase(db, [initialOpp]);
+
+  const adminToken = 'admin_secret_token_at_least_32_characters_long';
+
+  // Mock connector returning:
+  // 1. One updated version of existing tender (deadline and requirements changed)
+  // 2. One brand new tender
+  const mockConnectors = async () => [
+    {
+      sourceId: 'etimad',
+      sourceName: 'منصة اعتماد',
+      status: 'LIVE' as const,
+      success: true,
+      records: [
+        {
+          id: 'etimad-existing-1',
+          source_id: 'etimad',
+          kind: 'tender',
+          status: 'open',
+          title: 'مشروع صيانة شبكات المياه والمضخات',
+          organization: 'وزارة البيئة والمياه والزراعة',
+          source_url: 'https://tenders.etimad.sa/1',
+          deadline: '2027-06-30', // Updated deadline
+          requirements: ['شهادة تصنيف', 'ضمان بنكي إلكتروني'], // Updated requirements
+        },
+        {
+          id: 'etimad-new-2',
+          source_id: 'etimad',
+          kind: 'tender',
+          status: 'open',
+          title: 'توريد وتركيب أجهزة استشعار بيئية',
+          organization: 'المركز الوطني للأرصاد',
+          source_url: 'https://tenders.etimad.sa/2',
+          deadline: '2027-03-15',
+          requirements: ['سجل تجاري ساري'],
+        },
+      ],
+      notes: 'تم الاتصال بنجاح واستخراج 2 منافسة.',
+      publicAccess: 'LIVE',
+    },
+    {
+      sourceId: 'taqeem',
+      sourceName: 'الهيئة السعودية للمقيّمين المعتمدين',
+      status: 'BLOCKED' as const,
+      success: false,
+      records: [],
+      notes: 'حماية منع الوصول الآلي (403 Forbidden). السجلات السابقة محفوظة.',
+      publicAccess: 'BLOCKED',
+    },
+  ];
+
+  const result = await refreshOpportunities(db, `Bearer ${adminToken}`, adminToken, {
+    connectors: mockConnectors,
+  });
+
+  assert.strictEqual(result.ok, true);
+  assert.strictEqual(result.new_tenders, 1, 'Should discover exactly 1 new tender');
+  assert.strictEqual(result.updated_tenders, 1, 'Should update exactly 1 changed tender');
+  assert.strictEqual(result.verified_sources.length, 1);
+  assert.strictEqual(result.verified_sources[0], 'منصة اعتماد');
+  assert.strictEqual(result.failed_sources.length, 1);
+  assert.strictEqual(result.failed_sources[0].status, 'BLOCKED');
+
+  // Verify updated opportunity in D1 has new deadline
+  const updated = await getOpportunityById(db, 'etimad-existing-1');
+  assert.strictEqual(updated.deadline, '2027-06-30');
+  assert.strictEqual(updated.requirements.length, 2);
+
+  // Verify version history was created in versions table
+  const versionRow = await db.prepare('SELECT * FROM versions WHERE opportunity_id = ?').bind('etimad-existing-1').first<any>();
+  assert.ok(versionRow, 'Previous version must be recorded');
+  const prevData = JSON.parse(versionRow.data);
+  assert.strictEqual(prevData.deadline, '2027-01-01', 'Previous version captured original deadline');
+
+  // Verify new opportunity was inserted
+  const brandNew = await getOpportunityById(db, 'etimad-new-2');
+  assert.ok(brandNew);
+  assert.strictEqual(brandNew.title, 'توريد وتركيب أجهزة استشعار بيئية');
+});
+
+test('D1 Database - Preservation of existing records when a source fails or is blocked', async () => {
+  const db = await createLocalD1Database(':memory:');
+  const taqeemOpp = {
+    id: 'taqeem-tender-1',
+    source_id: 'taqeem',
+    kind: 'tender',
+    status: 'open',
+    title: 'تطوير المنظومة الإلكترونية للتقييم',
+    organization: 'هيئة المقيمين',
+    source_url: 'https://taqeem.gov.sa/tenders/1',
+    deadline: '2028-01-01',
+  };
+  await initDatabase(db, [taqeemOpp]);
+
+  const adminToken = 'admin_secret_token_at_least_32_characters_long';
+
+  // Mock connector returning complete failure / 403 blocked for taqeem
+  const mockConnectors = async () => [
+    {
+      sourceId: 'taqeem',
+      sourceName: 'الهيئة السعودية للمقيّمين المعتمدين',
+      status: 'BLOCKED' as const,
+      success: false,
+      records: [],
+      notes: 'HTTP 403 Forbidden. السجلات السابقة محفوظة.',
+      publicAccess: 'BLOCKED',
+    },
+  ];
+
+  const result = await refreshOpportunities(db, `Bearer ${adminToken}`, adminToken, {
+    connectors: mockConnectors,
+  });
+
+  assert.strictEqual(result.ok, true);
+  assert.strictEqual(result.failed_sources.length, 1);
+  assert.strictEqual(result.failed_sources[0].id, 'taqeem');
+
+  // Crucial check: Existing record for taqeem MUST still exist in D1!
+  const opp = await getOpportunityById(db, 'taqeem-tender-1');
+  assert.ok(opp, 'Previous record must be preserved when source fails');
+  assert.strictEqual(opp.title, 'تطوير المنظومة الإلكترونية للتقييم');
+  assert.strictEqual(opp.status, 'open');
+});
+
+test('D1 Database - Verified manual import via importOpportunities', async () => {
+  const db = await createLocalD1Database(':memory:');
+  await initDatabase(db);
+
+  const adminToken = 'admin_secret_token_at_least_32_characters_long';
+
+  const payload = {
+    source_id: 'ksau_hs',
+    opportunities: [
+      {
+        id: 'ksau-manual-1',
+        title: 'صيانة مبنى الكليات الصحية',
+        organization: 'جامعة الملك سعود للعلوم الصحية',
+        kind: 'tender',
+        status: 'open',
+        deadline: '2027-11-20',
+        city: 'الرياض',
+        sectors: ['maintenance', 'construction'],
+        reference: 'KSAU-2026-44',
+        source_url: 'https://ksau-hs.edu.sa/biddings/44',
+      },
+    ],
+  };
+
+  // Unauthorized import
+  const fail = await importOpportunities(db, 'bad_token', adminToken, payload);
+  assert.strictEqual(fail.ok, false);
+  assert.strictEqual(fail.status, 401);
+
+  // Authorized import
+  const success = await importOpportunities(db, `Bearer ${adminToken}`, adminToken, payload);
+  assert.strictEqual(success.ok, true);
+  assert.strictEqual(success.status, 200);
+  assert.strictEqual(success.imported, 1);
+  assert.strictEqual(success.new_records, 1);
+
+  // Verify in D1
+  const importedOpp = await getOpportunityById(db, 'ksau-manual-1');
+  assert.ok(importedOpp);
+  assert.strictEqual(importedOpp.title, 'صيانة مبنى الكليات الصحية');
+  assert.strictEqual(importedOpp.organization, 'جامعة الملك سعود للعلوم الصحية');
+  assert.strictEqual(importedOpp.city, 'الرياض');
+});
+

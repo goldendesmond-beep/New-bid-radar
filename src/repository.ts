@@ -4,6 +4,7 @@
 import crypto from 'node:crypto';
 import type { D1Database, OpportunityRecord, SourceRecord, SessionRecord, CompanyProfile, TrackingRecord } from './types.js';
 import { SECTORS, classify, relevance, fit, normalize } from './intelligence.js';
+import { runAllConnectors, type ConnectorResult } from './connectors.js';
 
 export function todayInRiyadh(): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Riyadh' }).format(new Date());
@@ -342,6 +343,14 @@ export async function getSummary(db: D1Database): Promise<any> {
 
   // Real last run from runs table, no hardcoded claims
   const lastRunRow = await db.prepare('SELECT * FROM runs ORDER BY id DESC LIMIT 1').first<any>();
+  let lastRunSummary: any = null;
+  if (lastRunRow?.data) {
+    try {
+      lastRunSummary = JSON.parse(lastRunRow.data);
+    } catch {
+      lastRunSummary = {};
+    }
+  }
 
   return {
     total: opps.length,
@@ -356,6 +365,7 @@ export async function getSummary(db: D1Database): Promise<any> {
       started_at: lastRunRow.started_at,
       finished_at: lastRunRow.finished_at,
       status: lastRunRow.status,
+      summary: lastRunSummary,
     } : null,
     today: todayInRiyadh(),
     zero_cost_only: true,
@@ -529,19 +539,58 @@ export function verifyAdminToken(providedToken: string, expectedToken?: string):
   }
 }
 
+export interface RefreshOptions {
+  connectors?: () => Promise<ConnectorResult[]>;
+}
+
+export interface RefreshResult {
+  ok: boolean;
+  status: number;
+  message: string;
+  run_id?: number;
+  new_tenders: number;
+  updated_tenders: number;
+  closed_expired: number;
+  unchanged_tenders: number;
+  verified_sources: string[];
+  failed_sources: Array<{ id: string; name: string; status: string; reason: string }>;
+  unreachable_sources: Array<{ id: string; name: string; status: string; reason: string }>;
+  preserved_sources: number;
+  details?: {
+    new_records: Array<{ id: string; title: string; organization: string }>;
+    updated_records: Array<{ id: string; title: string }>;
+    failed_sources: Array<{ id: string; name: string; status: string; reason: string }>;
+  };
+}
+
 /**
- * Performs admin manual refresh: audits run, updates expired statuses in D1.
+ * Performs admin manual refresh:
+ * 1. Checks and closes expired opportunities in D1
+ * 2. Fetches real Saudi procurement source connectors (Etimad and official portals)
+ * 3. Discovers, verifies, deduplicates, and saves real new or updated tenders into D1
+ * 4. Preserves previous records if any source fails (403, timeout, etc.)
+ * 5. Accurately reports new, updated, closed, failed, and unreachable results separately
+ * 6. Never marks a source LIVE without successful actual network verification
  */
 export async function refreshOpportunities(
   db: D1Database,
   adminToken: string,
-  configuredAdminToken?: string
-): Promise<{ ok: boolean; status: number; message: string; run_id?: number; closed_expired?: number }> {
+  configuredAdminToken?: string,
+  options?: RefreshOptions
+): Promise<RefreshResult> {
   if (!verifyAdminToken(adminToken, configuredAdminToken)) {
     return {
       ok: false,
       status: 401,
       message: 'رمز المشرف غير صحيح أو غير مصرح به (يلزم توفير مفتاح لا يقل عن 32 حرفًا)',
+      new_tenders: 0,
+      updated_tenders: 0,
+      closed_expired: 0,
+      unchanged_tenders: 0,
+      verified_sources: [],
+      failed_sources: [],
+      unreachable_sources: [],
+      preserved_sources: 0,
     };
   }
 
@@ -553,11 +602,11 @@ export async function refreshOpportunities(
   `).bind(startedAt, 'running', '{}').run();
 
   const runId = runResult.meta.last_row_id;
+  const now = new Date().toISOString();
 
-  // Re-check deadlines and close expired opportunities
+  // 1. Re-check deadlines and close expired opportunities
   const rows = await db.prepare("SELECT id, data FROM opportunities WHERE status IN ('open', 'unknown')").all<any>();
   let closedCount = 0;
-  const now = new Date().toISOString();
 
   for (const row of rows.results || []) {
     let rec: any;
@@ -583,12 +632,203 @@ export async function refreshOpportunities(
     }
   }
 
+  // 2. Run source connectors (Etimad and official sources)
+  let connectorResults: ConnectorResult[] = [];
+  try {
+    if (options?.connectors) {
+      connectorResults = await options.connectors();
+    } else {
+      connectorResults = await runAllConnectors();
+    }
+  } catch (err: any) {
+    connectorResults = [
+      {
+        sourceId: 'system',
+        sourceName: 'موصلات المصادر',
+        status: 'UNAVAILABLE',
+        success: false,
+        records: [],
+        notes: `خطأ أثناء استدعاء الموصلات: ${err.message || String(err)}`,
+        publicAccess: 'UNAVAILABLE',
+        error: err.message || String(err),
+      },
+    ];
+  }
+
+  let newCount = 0;
+  let updatedCount = 0;
+  let unchangedCount = 0;
+  const verifiedSources: string[] = [];
+  const failedSources: Array<{ id: string; name: string; status: string; reason: string }> = [];
+  const unreachableSources: Array<{ id: string; name: string; status: string; reason: string }> = [];
+  const newRecords: Array<{ id: string; title: string; organization: string }> = [];
+  const updatedRecords: Array<{ id: string; title: string }> = [];
+
+  for (const c of connectorResults) {
+    const sId = c.sourceId;
+    const sName = c.sourceName;
+
+    // Update source status in D1
+    const existingSource = await db.prepare('SELECT id, status, data, last_attempt, last_success FROM sources WHERE id = ?').bind(sId).first<any>();
+
+    let sourceData: any = {};
+    if (existingSource) {
+      try {
+        sourceData = JSON.parse(existingSource.data);
+      } catch {}
+    } else {
+      sourceData = { id: sId, name: sName, url: '' };
+    }
+
+    sourceData.last_attempt = now;
+    sourceData.notes = c.notes;
+    sourceData.public_access = c.publicAccess;
+
+    if (c.status === 'LIVE' && c.success) {
+      sourceData.last_success = now;
+      sourceData.status = 'LIVE';
+      verifiedSources.push(sName);
+
+      if (existingSource) {
+        await db.prepare(`
+          UPDATE sources
+          SET status = 'LIVE', last_attempt = ?, last_success = ?, data = ?
+          WHERE id = ?
+        `).bind(now, now, JSON.stringify(sourceData), sId).run();
+      } else {
+        await db.prepare(`
+          INSERT INTO sources (id, name, url, status, data, last_attempt, last_success)
+          VALUES (?, ?, ?, ?, ?, ?, ?)
+        `).bind(sId, sName, '', 'LIVE', JSON.stringify(sourceData), now, now).run();
+      }
+    } else if (c.status === 'BLOCKED') {
+      sourceData.status = 'BLOCKED';
+      failedSources.push({ id: sId, name: sName, status: 'BLOCKED', reason: c.notes });
+      if (existingSource) {
+        // Preserves previous records and previous last_success
+        await db.prepare(`
+          UPDATE sources
+          SET status = 'BLOCKED', last_attempt = ?, data = ?
+          WHERE id = ?
+        `).bind(now, JSON.stringify(sourceData), sId).run();
+      }
+    } else {
+      sourceData.status = c.status;
+      unreachableSources.push({ id: sId, name: sName, status: c.status, reason: c.notes });
+      if (existingSource) {
+        // Preserves previous records and previous last_success
+        await db.prepare(`
+          UPDATE sources
+          SET status = ?, last_attempt = ?, data = ?
+          WHERE id = ?
+        `).bind(c.status, now, JSON.stringify(sourceData), sId).run();
+      }
+    }
+
+    // Process extracted opportunities from this connector
+    for (const rawOpp of c.records) {
+      const opp = normalizeRecord(rawOpp);
+      const fingerprint = crypto.createHash('sha256').update(
+        opp.source_id + '|' + (opp.reference || opp.source_url) + '|' + opp.title
+      ).digest('hex');
+
+      // Check if already in D1
+      const existingOpp = await db.prepare(
+        'SELECT id, fingerprint, status, deadline, title, organization, data FROM opportunities WHERE id = ? OR fingerprint = ?'
+      ).bind(opp.id, fingerprint).first<any>();
+
+      if (existingOpp) {
+        let existingObj: any = {};
+        try {
+          existingObj = JSON.parse(existingOpp.data);
+        } catch {}
+
+        const hasChanged =
+          existingOpp.status !== opp.status ||
+          existingOpp.deadline !== opp.deadline ||
+          existingOpp.title !== opp.title ||
+          existingOpp.organization !== opp.organization ||
+          existingObj.document_fee !== opp.document_fee ||
+          JSON.stringify(existingObj.requirements || []) !== JSON.stringify(opp.requirements || []);
+
+        if (hasChanged) {
+          // Record old version
+          await db.prepare(`
+            INSERT INTO versions (opportunity_id, data, recorded_at)
+            VALUES (?, ?, ?)
+          `).bind(existingOpp.id, existingOpp.data, now).run();
+
+          // Update opportunity
+          await db.prepare(`
+            UPDATE opportunities
+            SET kind = ?, status = ?, deadline = ?, title = ?, city = ?, organization = ?, data = ?, updated_at = ?
+            WHERE id = ?
+          `).bind(
+            opp.kind || 'tender',
+            opp.status,
+            opp.deadline || null,
+            opp.title,
+            opp.city || 'السعودية',
+            opp.organization,
+            JSON.stringify(opp),
+            now,
+            existingOpp.id
+          ).run();
+
+          updatedCount++;
+          updatedRecords.push({ id: existingOpp.id, title: opp.title });
+        } else {
+          unchangedCount++;
+        }
+      } else {
+        // Insert new opportunity
+        await db.prepare(`
+          INSERT INTO opportunities (id, fingerprint, source_id, kind, status, deadline, title, city, organization, data, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          opp.id,
+          fingerprint,
+          opp.source_id,
+          opp.kind || 'tender',
+          opp.status,
+          opp.deadline || null,
+          opp.title,
+          opp.city || 'السعودية',
+          opp.organization,
+          JSON.stringify(opp),
+          opp.last_verified || now,
+          now
+        ).run();
+
+        newCount++;
+        newRecords.push({ id: opp.id, title: opp.title, organization: opp.organization });
+      }
+    }
+  }
+
+  // Count preserved sources
+  const totalSourcesCount = await db.prepare('SELECT COUNT(*) as count FROM sources').first<{ count: number }>();
+  const totalSources = totalSourcesCount?.count || 0;
+  const preservedSources = Math.max(0, totalSources - verifiedSources.length);
+
   const finishedAt = new Date().toISOString();
+  const runPayload = {
+    new_tenders: newCount,
+    updated_tenders: updatedCount,
+    closed_expired: closedCount,
+    unchanged_tenders: unchangedCount,
+    verified_sources: verifiedSources,
+    failed_sources: failedSources,
+    unreachable_sources: unreachableSources,
+    preserved_sources: preservedSources,
+    mode: 'MANUAL_REFRESH',
+  };
+
   await db.prepare(`
     UPDATE runs
     SET finished_at = ?, status = 'completed', data = ?
     WHERE id = ?
-  `).bind(finishedAt, JSON.stringify({ closed_expired: closedCount, mode: 'MANUAL_REFRESH' }), runId).run();
+  `).bind(finishedAt, JSON.stringify(runPayload), runId).run();
 
   await db.prepare(`
     INSERT INTO audit_logs (event, target, occurred_at, data)
@@ -596,16 +836,146 @@ export async function refreshOpportunities(
   `).bind(
     'admin_manual_refresh',
     'HTTP_ADMIN',
+    finishedAt,
+    JSON.stringify({ run_id: runId, ...runPayload })
+  ).run();
+
+  let message = `تم التحديث بنجاح: اكتشاف ${newCount} منافسة جديدة، وتحديث ${updatedCount} منافسة، وإغلاق ${closedCount} منافسة منتهية. ` +
+    `المصادر المباشرة المتحققة (${verifiedSources.length}): ${verifiedSources.join('، ') || 'لا يوجد'}. `;
+  if (failedSources.length > 0) {
+    message += `المصادر المحمية والمحفوظة (${failedSources.length}): ${failedSources.map(f => f.name).join('، ')}. `;
+  }
+  if (unreachableSources.length > 0) {
+    message += `المصادر غير المتاحة (${unreachableSources.length}): ${unreachableSources.map(u => u.name).join('، ')}. `;
+  }
+  message += `جميع السجلات السابقة محفوظة بأمان في Cloudflare D1.`;
+
+  return {
+    ok: true,
+    status: 200,
+    message,
+    run_id: runId,
+    new_tenders: newCount,
+    updated_tenders: updatedCount,
+    closed_expired: closedCount,
+    unchanged_tenders: unchangedCount,
+    verified_sources: verifiedSources,
+    failed_sources: failedSources,
+    unreachable_sources: unreachableSources,
+    preserved_sources: preservedSources,
+    details: {
+      new_records: newRecords,
+      updated_records: updatedRecords,
+      failed_sources: failedSources,
+    },
+  };
+}
+
+/**
+ * Handles verified manual import for protected, blocked, or authorized sources.
+ */
+export async function importOpportunities(
+  db: D1Database,
+  adminToken: string,
+  configuredAdminToken: string | undefined,
+  body: any
+): Promise<{ ok: boolean; status: number; message: string; imported?: number; new_records?: number; updated_records?: number }> {
+  if (!verifyAdminToken(adminToken, configuredAdminToken)) {
+    return {
+      ok: false,
+      status: 401,
+      message: 'رمز المشرف غير صحيح أو غير مصرح به (يلزم توفير مفتاح لا يقل عن 32 حرفًا)',
+    };
+  }
+
+  const rawItems = Array.isArray(body) ? body : Array.isArray(body?.opportunities) ? body.opportunities : [];
+  if (rawItems.length === 0) {
+    return {
+      ok: false,
+      status: 400,
+      message: 'لم يتم توفير أي سجلات للاستيراد. أرسل مصفوفة opportunities في الطلب.',
+    };
+  }
+
+  const sourceId = body?.source_id || rawItems[0]?.source_id || 'manual_import';
+  const now = new Date().toISOString();
+  let newCount = 0;
+  let updatedCount = 0;
+
+  for (const raw of rawItems) {
+    const opp = normalizeRecord({ ...raw, source_id: raw.source_id || sourceId });
+    const fingerprint = crypto.createHash('sha256').update(
+      opp.source_id + '|' + (opp.reference || opp.source_url) + '|' + opp.title
+    ).digest('hex');
+
+    const existing = await db.prepare(
+      'SELECT id, fingerprint, data FROM opportunities WHERE id = ? OR fingerprint = ?'
+    ).bind(opp.id, fingerprint).first<any>();
+
+    if (existing) {
+      await db.prepare('INSERT INTO versions (opportunity_id, data, recorded_at) VALUES (?, ?, ?)').bind(existing.id, existing.data, now).run();
+      await db.prepare(`
+        UPDATE opportunities
+        SET kind = ?, status = ?, deadline = ?, title = ?, city = ?, organization = ?, data = ?, updated_at = ?
+        WHERE id = ?
+      `).bind(
+        opp.kind || 'tender',
+        opp.status,
+        opp.deadline || null,
+        opp.title,
+        opp.city || 'السعودية',
+        opp.organization,
+        JSON.stringify(opp),
+        now,
+        existing.id
+      ).run();
+      updatedCount++;
+    } else {
+      await db.prepare(`
+        INSERT INTO opportunities (id, fingerprint, source_id, kind, status, deadline, title, city, organization, data, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(
+        opp.id,
+        fingerprint,
+        opp.source_id,
+        opp.kind || 'tender',
+        opp.status,
+        opp.deadline || null,
+        opp.title,
+        opp.city || 'السعودية',
+        opp.organization,
+        JSON.stringify(opp),
+        opp.last_verified || now,
+        now
+      ).run();
+      newCount++;
+    }
+  }
+
+  // Update source record if exists
+  await db.prepare(`
+    UPDATE sources
+    SET last_attempt = ?, last_success = ?, status = 'MANUAL_IMPORT'
+    WHERE id = ?
+  `).bind(now, now, sourceId).run();
+
+  await db.prepare(`
+    INSERT INTO audit_logs (event, target, occurred_at, data)
+    VALUES (?, ?, ?, ?)
+  `).bind(
+    'admin_manual_import',
+    sourceId,
     now,
-    JSON.stringify({ run_id: runId, closed_expired: closedCount })
+    JSON.stringify({ total: rawItems.length, new_records: newCount, updated_records: updatedCount })
   ).run();
 
   return {
     ok: true,
     status: 200,
-    message: `تم تحديث السجلات بنجاح ومراجعة ${rows.results.length} منافسة (تم إغلاق ${closedCount} منافسة منتهية)`,
-    run_id: runId,
-    closed_expired: closedCount,
+    message: `تم استيراد وتوثيق ${rawItems.length} سجل بنجاح (${newCount} جديد، ${updatedCount} محدث). السجلات محفوظة في D1.`,
+    imported: rawItems.length,
+    new_records: newCount,
+    updated_records: updatedCount,
   };
 }
 
